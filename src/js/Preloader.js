@@ -4,6 +4,7 @@ SpocodeGame.Preloader = function(game) {
 
 SpocodeGame.Preloader.prototype = {
     preload: function() {
+        this.stage.backgroundColor = "#ffffff";
         this.add.text(200, 200, "Loading");
 
         // Load the assets we need for the game
@@ -25,6 +26,10 @@ SpocodeGame.Preloader.prototype = {
     },
 
     create: function() {
-        this.state.start('Game');
+    },
+
+    update: function() {
+        if (this.cache.isSoundDecoded('the_complex'))
+            this.state.start('Game');
     }
 };
