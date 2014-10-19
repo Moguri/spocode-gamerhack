@@ -1,9 +1,23 @@
 {
-	"name": "spocode",
-	"main": "index.html",
-    "window": {
-        "toolbar": false,
-        "width": 1024,
-        "height": 768
-    }
+  "name": "Spocode",
+  "version": "0.0.0",
+  "description": "HTML5/JS game created for SpoCode GAMERHACK using Phaser",
+  "main": "src/index.html",
+  "dependencies": {
+    "grunt": "^0.4.5"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-node-webkit-builder": "^0.2.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mitchell Stokes",
+  "license": "MIT",
+  "window": {
+      "toolbar": false,
+      "width": 1024,
+      "height": 768
+  }
 }
