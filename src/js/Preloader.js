@@ -1,6 +1,6 @@
 SpocodeGame.Preloader = function(game) {
     this.ready = false;
-}
+};
 
 SpocodeGame.Preloader.prototype = {
     preload: function() {

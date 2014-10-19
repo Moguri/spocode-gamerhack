@@ -1,7 +1,7 @@
 SpocodeGame.EndGame = function(game) {
-    this.endkey;
-    this.msg;
-}
+    this.endkey = null;
+    this.msg = null;
+};
 
 SpocodeGame.EndGame.prototype = {
     create: function() {

@@ -1,12 +1,12 @@
 SpocodeGame.Game = function(game) {
-    this.player;
-    this.layer;
-    this.cursors;
-    this.jump;
-    this.score = 0;
-    this.coins;
-    this.coin_fx;
-    this.score_text;
+    this.player = null;
+    this.layer = null;
+    this.cursors = null;
+    this.jump = null;
+    this.score = null;
+    this.coins = null;
+    this.coin_fx = null;
+    this.score_text = null;
 
     this.btn_left_down = false;
     this.btn_right_down = false;
