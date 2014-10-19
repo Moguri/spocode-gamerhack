@@ -9,7 +9,7 @@ SpocodeGame.EndGame.prototype = {
             this.msg = this.add.text(200, 200, "All scrap collected, press enter to restart.");
         }
         else {
-            this.msg = this.add.text(200, 200, "All scrap collected, tap the screen to restart.");
+            this.msg = this.add.text(100, 200, "All scrap collected, tap the screen to restart.");
         }
 
         this.endkey = this.input.keyboard.addKey(Phaser.Keyboard.ENTER);
