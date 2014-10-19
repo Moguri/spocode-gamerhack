@@ -18,16 +18,8 @@ SpocodeGame.Game = function(game) {
     this.JUMP_SPEED = 400;
     this.UI_TEXT = "Scrap found: ";
 
-    this.COIN_POS = [
-        [1485, 400],
-        [1620, 400],
-        [930, 555],
-        [2300, 400],
-        [2200, 800],
-        [1200, 800],
-        [1630, 700]
-    ];
-}
+    this.NUM_COINS = 0;
+};
 
 SpocodeGame.Game.prototype = {
     create: function() {
@@ -45,7 +37,7 @@ SpocodeGame.Game.prototype = {
         map.setCollisionBetween(210, 217); // Floor pieces
         map.setCollision([146, 147, 181, 182]); // Crates
 
-        this.layer = map.createLayer('Tile Layer 1');
+        this.layer = map.createLayer('Base');
         this.layer.resizeWorld();
 
         // Setup player
@@ -62,22 +54,23 @@ SpocodeGame.Game.prototype = {
 
         // Place coins
         this.coins = this.add.group();
-        for (var i = 0; i < this.COIN_POS.length; i++) {
-            var coin = this.coins.create(this.COIN_POS[i][0], this.COIN_POS[i][1], 'coin');
+        map.createFromObjects('Objects', 179, 'coin', '', true, false, this.coins);
+        this.coins.forEach(function(coin, context) {
             coin.animations.add('anim');
             coin.animations.play('anim', 4, true);
             this.physics.enable(coin, Phaser.Physics.ARCADE);
             coin.body.immovable = true;
             coin.body.allowGravity = false;
-        }
+        }, this);
+        this.NUM_COINS = this.coins.length;
 
         // Setup keys
         this.cursors = this.input.keyboard.createCursorKeys();
         this.jump = this.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
         //this.input.onDown.add(this.gofull, this);
 
-        this.add.text(0, 0, "Find the scrap and repair the ship!");
-        this.score_text = this.add.text(10, this.game.height - 50, this.UI_TEXT + "0/" + this.COIN_POS.length);
+        this.add.text(0, 0, "Grab those coins!");
+        this.score_text = this.add.text(10, this.game.height - 50, this.UI_TEXT + "0/" + this.NUM_COINS);
         this.score_text.fixedToCamera = true;
 
         if (SpocodeGame.FORCE_BUTTONS || !this.game.device.desktop) {
@@ -140,10 +133,10 @@ SpocodeGame.Game.prototype = {
             self.score++;
             self.coinfx.play();
             coin_obj.destroy();
-            self.score_text.setText(self.UI_TEXT + self.score + "/" + self.COIN_POS.length);
+            self.score_text.setText(self.UI_TEXT + self.score + "/" + self.NUM_COINS);
         });
 
-        if (this.score == this.COIN_POS.length)
+        if (this.score == this.NUM_COINS)
             this.state.start('EndGame');
     },
 
