@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+    <title>Spocode Game</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1, IE=9">
+    <meta name="format-detected" content="telephone=no">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="robots" content="noindex,nofollow">
+    <meta name="viewport" content="initial-scale=1 maximum-scale=1 user-scalable=0 minimal-ui">
+    <script src="js/phaser.min.js"></script>
+    <script src="js/spocode.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        canvas {
+            cursor: none;
+        }
+    </style>
+</head>
+<body>
+<script type="text/javascript">
+window.onload = function() {
+    var game = new Phaser.Game("100%", "100%", Phaser.AUTO, '');
+
+    game.state.add('Boot', SpocodeGame.Boot);
+    game.state.add('Preloader', SpocodeGame.Preloader);
+    game.state.add('Game', SpocodeGame.Game);
+    game.state.add('EndGame', SpocodeGame.EndGame);
+
+    game.state.start('Boot');
+};
+</script>
+</body>
+</html>
