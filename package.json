@@ -8,6 +8,7 @@
   },
   "devDependencies": {
     "grunt": "^0.4.5",
+    "grunt-contrib-jshint": "^0.10.0",
     "grunt-node-webkit-builder": "^0.2.3"
   },
   "scripts": {
@@ -16,8 +17,8 @@
   "author": "Mitchell Stokes",
   "license": "MIT",
   "window": {
-      "toolbar": false,
-      "width": 1024,
-      "height": 768
+    "toolbar": false,
+    "width": 1024,
+    "height": 768
   }
 }
