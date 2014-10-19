@@ -2,7 +2,7 @@
   "name": "Spocode",
   "version": "0.0.0",
   "description": "HTML5/JS game created for SpoCode GAMERHACK using Phaser",
-  "main": "src/index.html",
+  "main": "dist/index.html",
   "dependencies": {
     "grunt": "^0.4.5"
   },

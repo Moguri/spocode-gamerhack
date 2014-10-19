@@ -7,7 +7,7 @@ module.exports = function(grunt) {
                 platforms: ['linux64'],
                 buildDir: './webkitbuilds',
             },
-            src: ['./package.json', './credits.txt', './src/**/*']
+            src: ['./package.json', './credits.txt', './dist/**/*']
         },
         jshint: {
             files: ['Gruntfile.js', 'src/**/*.js', '!src/js/phaser.min.js']
