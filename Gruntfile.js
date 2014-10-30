@@ -14,7 +14,8 @@ module.exports = function(grunt) {
         },
         uglify: {
             options: {
-                banner: '/*\n <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> \n*/\n'
+                banner: '/*\n <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> \n*/\n',
+                sourceMap: 'dist/js/spocode.map'
             },
             build: {
                 files: {
@@ -65,6 +66,15 @@ module.exports = function(grunt) {
                 files: '<%= copy.html.cwd %>/<%= copy.html.src %>',
                 tasks: ['copy:html']
             }
+        },
+        connect: {
+            server: {
+                options: {
+                    livereload: true,
+                    base: 'dist/',
+                    port: 8080
+                }
+            }
         }
     });
 
@@ -73,7 +83,9 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-connect');
 
     grunt.registerTask('build', ['copy', 'jshint', 'uglify']);
+    grunt.registerTask('serve', ['build', 'connect:server', 'watch']);
 };
 
