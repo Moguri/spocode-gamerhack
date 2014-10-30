@@ -62,7 +62,7 @@ module.exports = function(grunt) {
                 tasks: ['copy:assets']
             },
             html: {
-                files: '<<%= copy.assets.cwd %>/%= copy.html.src %>',
+                files: '<%= copy.html.cwd %>/<%= copy.html.src %>',
                 tasks: ['copy:html']
             }
         }
