@@ -91,6 +91,9 @@ SpocodeGame.Game.prototype = {
            btn_a.onInputDown.add(function(){self.btn_a_down = true;});
            btn_a.onInputUp.add(function(){self.btn_a_down = false;});
         }
+
+        // Setup ui
+        Dialog.setup();
     },
 
     gofull: function () {
