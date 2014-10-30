@@ -9,7 +9,8 @@ var Dialog = {
              'padding: 5px;' +
              'border: 3px solid black;' +
              'border-radius: 10px;' +
-             'z-index: 2147483647;'
+             'z-index: 2147483647;',
+    divid: 'dialogui'
 };
 
 Dialog.setup = function() {
@@ -27,14 +28,32 @@ Dialog.setup = function() {
     })();
 
     Dialog.sheet.insertRule(Dialog.uiselector + '{' + Dialog.uirules + '}', 0);
+};
+
+Dialog.show = function(msg, speaker) {
+    var uidiv,
+        html;
 
     // Create a div to hold the dialog box
-    var uidiv = document.createElement("div");
-    uidiv.innerHTML = "<h1>Msg Box:</h1><p>Lorem ipsum</p>";
+    uidiv = document.getElementById(Dialog.divid) || document.createElement("div");
+    uidiv.id = Dialog.divid;
     uidiv.className = "ui";
     uidiv.style.top = "70%";
     uidiv.style.left = "10%";
-    
+  
+
+    html = "<p>" + msg + "</p>";
+    if (speaker !== undefined)
+        html = "<h2>" + speaker + "</h2>" + html;
+    uidiv.innerHTML = html;
+
     document.body.appendChild(uidiv);
 };
 
+Dialog.remove = function() {
+    var uidiv = document.getElementById(Dialog.divid);
+
+    console.log(uidiv);
+    if (uidiv)
+        uidiv.parentNode.removeChild(uidiv);
+};
